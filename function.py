@@ -1,25 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import csv
 
-file = open('samsung.csv','r')
-csvfile = csv.reader(file)
-
-list=[]
-stockPrice=[]
-for line in csvfile:
-    list.append(line[1])
-
-for i in range(0, len(list) ):
-    stockPrice.append( list[ len(list) - i - 1 ] )
-
-trainDataSize = 100
-trainData = stockPrice[ : trainDataSize ]
-testData = stockPrice[ : ]
+def function(x):
+    return x**2
 
 #### data preprocessing
-# trainData=30
-# testData=2*trainData
+trainData=30
+testData=2*trainData
 inputLength=5
 a=[]
 x=[]
@@ -56,7 +43,7 @@ model.summary()
 
 #3. training
 model.compile(loss='mse', optimizer='adam', metrics=['mse'])
-history = model.fit(x_train, y_train, epochs=100, batch_size=1)
+history = model.fit(x_train, y_train, epochs=30, batch_size=1)
 
 #4. prediction
 y_predict = model.predict(x_test)
